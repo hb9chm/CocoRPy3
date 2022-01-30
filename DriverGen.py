@@ -48,11 +48,9 @@ class DriverGen( object ):
       fn = str(fn)
       DriverGen.codeGen.openFiles( [ fr, 'Driver.frame' ], Tab.gramSy.name + '.atg', fn, True )
       DriverGen.codeGen.CopyFramePart( '-->begin' )
-      #DriverGen.codeGen.CopyFramePart( '-->class' )
-      #DriverGen.codeGen.write( Tab.gramSy.name )
       DriverGen.codeGen.CopyFramePart( '$$$' )
       DriverGen.codeGen.close( )
-      os.chmod(fn, 0755)
+      os.chmod(fn, 0o755)
 
    @staticmethod
    def Init( f, dir ):

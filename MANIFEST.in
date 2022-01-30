@@ -1,0 +1,19 @@
+include CharClass.py
+include Coco.py
+include CodeGenerator.py
+include Core.py
+include DriverGen.py
+include Errors.py
+include Parser.py
+include ParserGen.py
+include README
+include Scanner.py
+include Trace.py
+include setup.py
+include setupInfo.py
+recursive-include documentation *
+recursive-include examples *
+recursive-include frames *
+recursive-include pimaker *
+recursive-include testSuite *
+recursive-include sources *

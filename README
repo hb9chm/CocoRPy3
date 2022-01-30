@@ -7,21 +7,68 @@ grammars is LL(k) for an arbitrary k.
 
 There is version of Coco/R for Python language.
 
-This is a fork of CocoPy-1.1.0rc (http://pypi.python.org/pypi/CocoPy/) of
-Ronald Longo, since it unmaintained.
+This update of Coco/R to Python 3 is based on CocoRPy27 (https://sourceforge.net/projects/cocorforpython/files/CocoRPy27-1.4.1.zip/download)
 
 
-!!!PLEASE NOTE!!!
-This distribution is a release candidate.
-
+SETUP AND USAGE
+===============
 Setup and usage information can be found in section 3 of
 documentation/CocoDoc.htm.  CocoDoc.htm contains everything you need to
 use Coco for Python.
 
-This file contains a list of the contents of the distribution and a
-development roadmap.
+QUICKSTART - Test the installation
+==================================
+1.  Insure that python 3 is the default python.  You can do this by
+    entering the following command at a shell or dos box prompt:
+
+          'python -V' <-- capital 'V'.
+
+2.  Unzip the CocoRPy3 into some convenient location.
+
+3.  CD into the CocoRPy3 folder structure.
+
+4.  CD into the pimaker subfolder.
+
+    PIMaker (Python Interactive Make utility) is a program/mini-language that
+    I wrote and have included in the Coco/R distribution as a practical example
+    of using Coco/R.  PIMaker is used in Coco/R to perform routine tasks with
+    the dsitribution.  It behaves very much like 'make'.
+
+5.  To be able to use pimaker, it's grammar must be compiled using Coco/R.
+    Execute the following command to compile pimaker and generate the pimaker
+    python application code
+
+          'python ../coco.py -c pimaker.atg'
+
+6.  You should get 0 errors.  To insure that pimaker.py was generated
+    correctly by Coco/R, execut the following command:
+
+          'python pimaker.py' to insure that pimaker compiled.
+
+    If Coco/R successfully compiled PIMaker and generated pimaker.py, it
+    will read in and parse the makepi.how file (written in PIMaker's language).
+    Pimaker will then present you with a menu of 'Targets:' it found in the
+    makepi.how file, and present you with a 'build>' prompt.
+
+7.  Testing.  There are several tests that this pimaker script can perform.
+    First the general functionality of Coco/R to insure that it contains no
+    bugs in the primary logic.  Do this by entering 'testFunctions' at the
+    pimaker prompt.  When the tests complete, the message '0 tests failed.'
+    should be printed.  Then you should be returned to the list of Targets and
+    build prompt.  Now type 'testExamples' to compile the example grammars.
+    Some of the grammars intensionally have errors or are non-LL(k).
+    
+    Type 'exit'.  Congratulation!  Coco/R is now installed and ready for use.
+    Please refer to the Documentation subfolder to learn how to construct
+    compilers and parsers using Coco/R.
+    
+    Note:  I reccomend against executing any of the remaining targets in pimaker
+    until you understand what they will do.
 
 CONTENTS OF THIS DISTRIBUTION
+=============================
+This file contains a list of the contents of the distribution and a
+development roadmap.
 
 This distribution of Coco includes the following:
 
@@ -99,12 +146,26 @@ This distribution of Coco includes the following:
 
 
 ROADMAP
+=======
 
    - Version numbering is tentative.
 
 
 Release#   Goal
 --------   ------------------------------------------------------
+3.0        Updated to Python 3.9
+
+2.0        Updated for consistency to the latest reference
+           implementations (Java & C#).
+
+1.9        Initial release of Coco/R for Python updated to the reference
+           implementations.
+
+1.5        Full well tested release AIXP's fork merged back into my code base.
+
+1.4        New release... AIXP's fork of my original Python port merged back
+           into my code base.
+
 1.0.10b2.  Coco now bootstraps correctly.
 
 1.1.0rc.   *** Release Candidate -- Coco now successfully runs the test suite
@@ -119,19 +180,12 @@ Release#   Goal
 1.1.3rc    Code generated from examples now successfully parses input
            and generates errors when appropriate.
 
-1.2.0.     *** Final -- No bugs reported or found for some (as yet
-           undetermined) period of time (e.g. 3 months).
+1.4.0      First release after merging the aixp/coco fork back into Ron Longo's
+           original implementation of Coco/R for Python.
 
-1.2.x.     Various bug fix releases
+1.5.0      Release of Coco/R brought into alignment with the Java and C#
+           reference implementations.
 
-1.3.0.     Coco is now updated to equivalence of the latest Java & C#
-           implementations.
-
-2.0.0.     *** Enhancements -- Incorporated various enhancements
-           - get rid of all the static code
-           - Improve indentation of generated code (currently much is
-             hardcoded).  Should be more flexible to user's preference.
+2.0.0.     Coco/R for Python 3.x
 
 
-As I move Coco towards a final release I also want to continuously update
-and refine the documentation.

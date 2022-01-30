@@ -186,14 +186,14 @@ class Parser( object ):
             self.Get( )
 
    def WeakSeparator( self, n, syFol, repFol ):
-      s = [ False for i in xrange( Parser.maxT+1 ) ]
+      s = [ False for i in range( Parser.maxT+1 ) ]
       if self.la.kind == n:
          self.Get( )
          return True
       elif self.StartOf(repFol):
          return False
       else:
-         for i in xrange( Parser.maxT ):
+         for i in range( Parser.maxT ):
             s[i] = self.set[syFol][i] or self.set[repFol][i] or self.set[0][i]
          self.SynErr( n )
          while not s[self.la.kind]:
@@ -658,7 +658,7 @@ class Parser( object ):
       elif self.la.kind == Scanner.string_Sym:
          name = self.String()
          if self.StartOf(21):
-            for i in xrange( 0, len(name) ):
+            for i in range( 0, len(name) ):
                if DFA.ignoreCase:
                   s.add(ord(name[i].lower()))
                else:
@@ -683,7 +683,7 @@ class Parser( object ):
                n2 = self.SingleChar(mx)
             else:
                self.SynErr(62)
-            for i in xrange( n1, n2+1 ):
+            for i in range( n1, n2+1 ):
                s.add(i)    
          else:
             self.SynErr(63)
@@ -704,12 +704,12 @@ class Parser( object ):
                n2 = self.SingleChar(mx)
             else:
                self.SynErr(64)
-            for i in xrange( n1, n2 ):
+            for i in range( n1, n2 ):
                s.add(i)                 
       elif self.la.kind == Scanner.ANY_Sym:
          self.Get( )
          s = set( )
-         for num in xrange( 0, CharClass.charSetSize ):
+         for num in range( 0, CharClass.charSetSize ):
             s.add(num)
          s.add('ANYCHAR')              
       else:
@@ -1040,7 +1040,7 @@ class Parser( object ):
    def Parse( self, scanner ):
       self.scanner = scanner
       self.la = Token( )
-      self.la.val = u''
+      self.la.val = ''
       self.Get( )
       self.Coco()
       self.Expect(Scanner.EOF_SYM)

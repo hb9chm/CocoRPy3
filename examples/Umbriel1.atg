@@ -1,4 +1,4 @@
-COMPILER Umbriel
+COMPILER Umbriel1
 /* COCO/R - like  Grammar for Umbriel
 
    Umbriel is a simple Modula-2 / Pascal like language
@@ -35,7 +35,7 @@ IGNORE CHR(9) .. CHR(13)
 
 PRODUCTIONS
 
-  Umbriel               = "MODULE" ModuleIdentifier ";"
+  Umbriel1              = "MODULE" ModuleIdentifier ";"
                              Block ModuleIdentifier "." .
 
   ModuleIdentifier      = identifier .
@@ -210,4 +210,4 @@ PRODUCTIONS
   AddOperator           = "+" | "-" | "OR" .
   Relation              = "=" | "#" | "<>" | "<" | "<=" | ">" | ">=" .
 
-END Umbriel.
+END Umbriel1.

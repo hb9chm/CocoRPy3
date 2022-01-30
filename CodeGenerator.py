@@ -27,7 +27,7 @@ class CodeGenerator( object ):
             if CodeGenerator.frameDir is not None:
                fr = os.path.join( CodeGenerator.frameDir, frameName )
          try:
-            self._frameFile = file( fr, 'r' )
+            self._frameFile = open( fr, 'r' )
             break
          except IOError:
             pass
@@ -42,7 +42,7 @@ class CodeGenerator( object ):
             if os.path.exists( fn + '.old' ):
                os.remove( fn + '.old' )
             os.rename( fn, fn + '.old' )
-         self._outputFile = file( fn, 'w' )
+         self._outputFile = open( fn, 'w' )
       except:
          raise RuntimeError( '-- Compiler Error: Cannot create ' + outputFileName[0] + '.py' )
 
@@ -84,7 +84,9 @@ class CodeGenerator( object ):
             self._outputFile.write( str(ch) )
             last = ch
             ch = self.frameRead( )
-      raise RuntimeError( ' -- Compiler Error: incomplete or corrupt parser frame file' )
+
+      if ch != CodeGenerator.EOF:
+         raise RuntimeError( ' -- Compiler Error: incomplete or corrupt parser frame file' )
 
    def CopySourcePart( self, pos, indent, forceOutput=False ):
       if pos is None:
@@ -124,17 +126,21 @@ class CodeGenerator( object ):
 
    def frameRead( self ):
       try:
-         return self._frameFile.read( 1 )
+         ch = self._frameFile.read( 1 )
+         if len(ch) == 0:
+            return CodeGenerator.EOF
       except IOError:
          #raise RuntimeError('-- Compiler Error: error reading Parser.frame')
-         return ParserGen.EOF
+         return CodeGenerator.EOF
+
+      return ch
 
    def Indent( self, n ):
       assert isinstance( n, int )
       self._outputFile.write( CodeGenerator.indent_unit * n )
 
    def Ch(ch):
-      if isinstance(self, ch, int):
+      if isinstance( ch, int):
          ch = str( ch )
       if ch < ' ' or ch >= str(127) or ch == '\'' or ch == '\\':
          return ch
@@ -142,7 +148,7 @@ class CodeGenerator( object ):
          return "ord('" + ch + "')"
 
    def ReportCh(self, ch):
-      if isinstance(ch, (str,unicode)):
+      if isinstance(ch, str):
          ch = ord(ch)
       if (ch < ord(' ') or ch >= 127 or ch == ord('\'') or ch == ord('\\')):
          return str(ch)
@@ -150,7 +156,7 @@ class CodeGenerator( object ):
          return ''.join( [ "'", chr(ch), "'" ] )
 
    def ChCond(self, ch, relOpStr='=='):
-      if isinstance(ch, (str,unicode)):
+      if isinstance(ch, str):
          ch = ord(ch)
 
       if (ch < ord(' ') or ch >= 127 or ch == ord('\'') or ch == ord('\\')):

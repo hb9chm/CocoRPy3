@@ -36,7 +36,12 @@ from Parser import *
 
 -->begin
 
-srcName = sys.argv[1]
+try:
+   srcName = sys.argv[1]
+except IndexError as ex:
+   print("No input file specified.  Exiting...")
+   sys.exit( )
+
 dirName, fileName = os.path.split(srcName)
 
 # Initialize the Scanner

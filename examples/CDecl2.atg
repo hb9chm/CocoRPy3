@@ -1,5 +1,5 @@
 $CX   /* Generate Main Module, C++ */
-COMPILER Decl
+COMPILER CDecl2
 /* Translate simple C declarations into English
    Based on Kernighan and Ritchie: "C Programming language", page 122
    See also: Parr et.al. "PCCTS reference manual", page 53 in ACM SIGPLAN
@@ -17,7 +17,7 @@ IGNORE CHR(9) .. CHR(13)
 
 PRODUCTIONS
 
-  Decl       =
+  CDecl2     =
                { name                     (. Tipe = Parser.token.val     .)
                  Dcl                      (. print ' %s' % Tipe,         .)
                  ";" } .
@@ -42,4 +42,4 @@ PRODUCTIONS
                 | "(" ")"                 (. print 'function returning', .)
                ] .
 
-END Decl.
+END CDecl2.

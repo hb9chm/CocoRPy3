@@ -1,22 +1,4 @@
-/*
-To Do:
-   - Allow macros to be defined at the top of the build.inp file.
-   - Macros may occur in Target: needs: or todo: sections.
-   - Macros are referenced using the syntax: $(MacroName{options})
-   - In action code, the following macros are defined:
-      $(TARGET)   the current target
-      $(DEPEND)   the list of dependencies
-   - options is a comma separated list of modifiers for the macro
-     expansion.
-     Available options:
-        +.s          Add to each item in the expanded macro or list
-        .ext1=.ext2  Transforms each filename with .ext1 to .ext2
-        DIR          Transform to list of dirs.
-        EXT          Transform to list of extensions
-        FNM          Transform to list of filenames
-*/
-from pimakerlib import *
-
+from piBuilder import *
       
 COMPILER pimaker
 
@@ -32,7 +14,7 @@ COMPILER pimaker
          return ''
 
       # Find prevailing indentation
-      for idx in xrange(0,len(prevailingLine)):
+      for idx in range(0,len(prevailingLine)):
          if not prevailingLine[idx].isspace( ):
             break
 
@@ -65,7 +47,7 @@ TOKENS
 
    string    = '"' {stringCh} '"' .
 
-COMMENTS FROM '|*' TO '*|'
+COMMENTS FROM '#' TO lf
 
 IGNORE cr + lf + tab
 
@@ -96,10 +78,8 @@ PRODUCTIONS
                             descr = self.scanner.buffer.getString(beg,end).)
       ')'
       ]
-      'needs' ':'        (. dList = [ ] .)
-      ( PathList<out dList>
-      |                  (. dList = [ ] .)
-      )
+      'needs' ':'        (. dList = [ ]                                   .)
+      [ PathList<out dList> ]
       'todo' ':'
       Body<out text>     (. if descr:
                                bld.addTarget( nameLst,descr,dList,text )

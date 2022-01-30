@@ -1,4 +1,4 @@
-COMPILER Pascal
+COMPILER Pascal2
 
 IGNORECASE
 
@@ -29,7 +29,7 @@ IGNORE cr + lf + tab
 
 PRODUCTIONS
 
-   Pascal =
+   Pascal2 =
       ProgramHeading ';' Block '.' .
 
    ProgramHeading =
@@ -461,7 +461,7 @@ PRODUCTIONS
    BoundIdentifier =
       identifier .
 
-
+   
 
    UnsignedNumber =
       unsignedInteger | unsignedReal .
@@ -478,4 +478,5 @@ PRODUCTIONS
    Label =
       unsignedInteger .
 
-END Pascal.
+END Pascal2 . 
+

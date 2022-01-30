@@ -1,4 +1,4 @@
-COMPILER Mod2
+COMPILER PIMMOD2
 /* COCO/R Grammar for Modula-2 based on "Programming in Modula-2 */
 
 CHARACTERS
@@ -27,7 +27,7 @@ COMMENTS
 IGNORE  CHR(9).. CHR(13)
 
 PRODUCTIONS
-  Mod2                 = DefinitionModule | [ "IMPLEMENTATION" ] ProgramModule .
+  PIMMOD2              = DefinitionModule | [ "IMPLEMENTATION" ] ProgramModule .
   Number               = integer | real .
   QualIdent            = ident { "." ident } .
   ConstantDeclaration  = ident "=" ConstExpression .
@@ -114,4 +114,5 @@ PRODUCTIONS
   ProgramModule        = "MODULE" ident [ Priority ] ";"
                          { Import } Block ident "." .
 
-END Mod2.
+END PIMMOD2.
+

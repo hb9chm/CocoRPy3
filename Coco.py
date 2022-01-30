@@ -67,7 +67,7 @@ ROOT_DIR = os.path.dirname( __file__ )
 class Coco:
    @staticmethod
    def main( argv=None ):
-      print 'Coco/R v%s for Python (May 16, 2007) - Translated by %s (%s)\n' % ( MetaData[ 'version' ], MetaData[ 'author' ], MetaData[ 'author_email' ] )
+      print('%s - version %s (built %s) - Ported to Python by %s (%s)\n' % ( MetaData['long_name'], MetaData['version'], MetaData['build_date'], MetaData['author'], MetaData['author_email'] ))
 
       if argv is None:
          if len(sys.argv) == 1:

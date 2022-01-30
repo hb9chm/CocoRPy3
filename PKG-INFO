@@ -1,13 +1,16 @@
 Metadata-Version: 1.0
-Name: CocoPy
-Version: 1.1.0rc
-Summary: Python implementation of the famous CoCo/R LL(k) compiler generator.
-Home-page: http://www.ssw.uni-linz.ac.at/coco
-Author: Ron Longo
-Author-email: ron.longo@cox.net
+Name: CocoRPy3
+Version: 3.0
+Summary: Python implementation of the famous CoCo/R LL(k) compiler generator ported to Python.
+Home-page: https://sourceforge.net/projects/cocorforpython/
+Author: Ronald H Longo
+Author-email: ron_longo@verizon.net
 License: GPL
+Download-URL: https://sourceforge.net/projects/cocorforpython/
 Description: UNKNOWN
-Platform: UNKNOWN
+Platform: Python 3
+Platform: Windows
+Platform: Unix
 Classifier: Development Status :: 4 - Beta
 Classifier: Environment :: Console
 Classifier: Intended Audience :: Developers

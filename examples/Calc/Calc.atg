@@ -21,7 +21,7 @@ COMPILER Calc
       return self.VARS[ spix ]
 
    def writeVal( self, val ):
-      print val
+      print(val)
 
    def readVal( self, spix ):
       self.VARS[ spix ] = int(raw_input( 'Read >' ))
@@ -29,7 +29,7 @@ COMPILER Calc
    def setVar( self, spix, val ):
       self.VARS[ spix ] = val
 
-IGNORECASE
+IGNORECASE    
 
 CHARACTERS
   letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".

@@ -1,4 +1,4 @@
-COMPILER MAda
+COMPILER MicroAda
 /* A micro subset of Ada as used by H Dobler in "Compilerbau I". */
 
 IGNORECASE
@@ -17,13 +17,13 @@ TOKENS
 COMMENTS FROM "--" TO eol
 
 PRODUCTIONS
-  MAda        =  "PACKAGE" id "IS" {Declaration} "BEGIN" {Stat} "END" [id] ";".
+  MicroAda    =  "PACKAGE" id "IS" {Declaration} "BEGIN" {Stat} "END" [id] ";".
   Declaration =  ObjsDecl | ProcDecl.
   ObjsDecl    =  IdList ":" Type.
   IdList      =  id {"," id}.
   Type        =  "ARRAY" "(" Range ")" "OF" SimpleType.
   SimpleType  =  "INTEGER" | "CHARACTER" | "BOOLEAN".
-  ProcDecl    =  "PROCEDURE" id FormalPart
+  ProcDecl    =  "PROCEDURE" id FormalPart 
                  ["IS" {Declaration} "BEGIN" {Stat} "END" [id]] ";".
   FormalPart  =  ["(" ParamDecl {";" ParamDecl} ")"].
   ParamDecl   =  IdList ":" [ParamMode] ["ARRAY" "OF"] SimpleType.
@@ -55,4 +55,5 @@ PRODUCTIONS
   AddOp       =  "+" | "-".
   MulOp       =  "*" | "/" | "MOD".
 
-END MAda.
+END MicroAda.
+
