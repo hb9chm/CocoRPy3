@@ -166,22 +166,6 @@ todo:
    $$$
 
 
-target: dist_test (Create a distribution for testing)
-needs:  sources/Coco.atg
-        sources/Coco.frame sources/Parser.frame sources/Scanner.frame
-        Coco.py Parser.py Scanner.py CharClass.py
-        CodeGenerator.py Core.py DriverGen.py Errors.py
-        ParserGen.py Trace.py
-        pimaker/pimaker.py pimaker/fileTools.py pimaker/piBuilder.py pimaker/makepi.how
-        setup.py setupInfo.py README MANIFEST.in
-todo:
-   changeDir( ROOT_DIR )
-   shell( 'python setup.py sdist' )
-   $$$
-
-
-
-
 target: sources/Coco.py sources/Parser.py sources/Scanner.py
 needs:  sources/Coco.atg
         sources/Coco.frame sources/Parser.frame sources/Scanner.frame

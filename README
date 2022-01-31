@@ -25,7 +25,7 @@ QUICKSTART - Test the installation
 
 2.  Unzip the CocoRPy3 into some convenient location.
 
-3.  CD into the CocoRPy3 folder structure.
+3.  CD into the src\CocoRPy3 folder structure.
 
 4.  CD into the pimaker subfolder.
 
@@ -64,6 +64,14 @@ QUICKSTART - Test the installation
     
     Note:  I reccomend against executing any of the remaining targets in pimaker
     until you understand what they will do.
+	
+	
+8.  Building a package can be done on the root folder by executing 'python -m build'.
+
+9.  Installing the package with 'pip install .\dist\CocoRPy3-3.0-py3-none-any.whl'.
+
+10. Using Coco with executing 'python -m CocoRPy3.Coco'.
+	
 
 CONTENTS OF THIS DISTRIBUTION
 =============================

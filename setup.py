@@ -1,5 +1,3 @@
-from distutils.core import setup
+import setuptools
 
-from setupInfo import MetaData
-
-setup( **MetaData )
+setuptools.setup()
