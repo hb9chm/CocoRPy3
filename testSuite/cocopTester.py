@@ -28,7 +28,7 @@ class CocoTester( object ):
 
    def compileBases( self, atgFilename,isErrorBase=False ):
       '''Python replacement for compile.bat.'''
-      print 'Compiling bases for test: %s' % atgFilename
+      print( 'Compiling bases for test: %s' % atgFilename )
 
       if not atgFilename.lower().endswith( '.atg' ):
          baseName = atgFilename
@@ -52,25 +52,25 @@ class CocoTester( object ):
       for name,testType in self._suite:
          self.compileBases( name,testType )
 
-      print 'Done.'
+      print( 'Done.' )
 
    def check( self, name, isErrorTest=False ):
-      print 'Running test: %s' % name
+      print( 'Running test: %s' % name )
 
       shell( '%s %s.atg >output.txt' % (self._compiler, name) )
-      if compareFiles( 'trace.txt', '%s_Trace.txt' % name ):
-         print 'trace files differ for %s' % name
+      if compareFiles( 'trace.txt', '%s_TraceBaseline.txt' % name ):
+         print( 'trace files differ for %s' % name )
          return False
-      if compareFiles( 'output.txt', '%s_Output.txt' % name, ignoreHeader=1 ):
-         print 'output files differ for %s' % name
+      if compareFiles( 'output.txt', '%s_stdoutBaseline.txt' % name, ignoreHeader=1 ):
+         print( 'output files differ for %s' % name )
          return False
 
       if not isErrorTest:
-         if compareFiles( 'Parser.py', '%s_Parser.py' % name ):
-            print 'output files differ for %s' % name
+         if compareFiles( 'Parser.py', '%s_parserBaseline.py' % name ):
+            print( 'output files differ for %s' % name )
             return False
-         if compareFiles( 'Scanner.py', '%s_Scanner.py' % name ):
-            print 'output files differ for %s' % name
+         if compareFiles( 'Scanner.py', '%s_scannerBaseline.py' % name ):
+            print( 'output files differ for %s' % name )
             return False
 
       deleteFiles( '*.py.old', 'Parser.py', 'Scanner.py', 'output.txt', 'trace.txt' )
@@ -85,8 +85,8 @@ class CocoTester( object ):
          if not passed:
             numFailures += 1
 
-      print '%d tests failed.' % numFailures
-      print 'Done.'
+      print( '%d tests failed.' % numFailures )
+      print( 'Done.' )
 
 suite = [
       ( 'TestAlts',           False ),
