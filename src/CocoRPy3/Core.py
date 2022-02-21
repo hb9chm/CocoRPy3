@@ -2383,7 +2383,7 @@ class DFA( object ):
    def OpenGen(backUp):
       assert isinstance(backUp,bool)
       try:
-         fn = DFA.srcDir + "Scanner.py"   # String
+         fn = os.path.join(DFA.srcDir, "Scanner.py")   # String
          if backUp and os.path.exists(fn):
             if os.path.exists(fn + '.old'):
                os.remove( fn + '.old' )
@@ -2396,7 +2396,7 @@ class DFA( object ):
    def WriteScanner( withNames):
       assert isinstance(withNames,bool)
       startTab = [ 0 for i in range(CharClass.charSetSize) ]
-      fr = DFA.srcDir + "Scanner.frame"   # String
+      fr = os.path.join(DFA.srcDir, "Scanner.frame")   # String
       if not os.path.exists( fr ):
          if Tab.frameDir is not None:
             fr = os.path.join( Tab.frameDir.strip(), "Scanner.frame" )

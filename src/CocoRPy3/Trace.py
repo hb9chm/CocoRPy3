@@ -88,4 +88,4 @@ class Trace( object ):
          os.remove( Trace.fileName )
       else:
          print()
-         print('trace output is in', Trace.fileName)
+         print('trace output is in', os.path.basename(Trace.fileName))

@@ -46,18 +46,18 @@ dirName, fileName = os.path.split(srcName)
 
 # Initialize the Scanner
 try:
-   s = open( fileName, 'r' )
+   s = open( srcName, 'r' )
    try:
       strVal = s.read( ).decode( locale.getpreferredencoding() )
    except IOError:
-      sys.stdout.write( '-- Compiler Error: Failed to read from source file "%s"\n' % fileName )
+      sys.stdout.write( '-- Compiler Error: Failed to read from source file "%s"\n' % srcName )
 
    try:
       s.close( )
    except IOError:
-      raise RuntimeError( '-- Compiler Error: cannot close source file "%s"' % fileName )
+      raise RuntimeError( '-- Compiler Error: cannot close source file "%s"' % srcName )
 except IOError:
-   raise RuntimeError( '-- Compiler Error: Cannot open file "%s"' % fileName )
+   raise RuntimeError( '-- Compiler Error: Cannot open file "%s"' % srcName )
 
 scanner = Scanner( strVal )
 parser  = Parser( )

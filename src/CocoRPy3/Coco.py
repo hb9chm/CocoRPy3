@@ -77,6 +77,7 @@ class Coco:
       options,args = Tab.parseArgs( argv )
 
       ATGName = args[1]
+      ATGName = os.path.abspath(ATGName)
       dirName, fileName = os.path.split(ATGName)
 
       # Setup the default frame directory
@@ -93,18 +94,18 @@ class Coco:
 
       # Initialize the Scanner
       try:
-         s = open( fileName, 'r' )
+         s = open( ATGName, 'r' )
          try:
             strVal = s.read( )
          except IOError:
-            sys.stdout.write( '-- Compiler Error: Failed to read from source file "%s"\n' % fileName )
+            sys.stdout.write( '-- Compiler Error: Failed to read from source file "%s"\n' % ATGName )
 
          try:
             s.close( )
          except IOError:
-            raise RuntimeError( '-- Compiler Error: cannot close source file "%s"' % fileName )
+            raise RuntimeError( '-- Compiler Error: cannot close source file "%s"' % ATGName )
       except IOError:
-         raise RuntimeError( '-- Compiler Error: Cannot open file "%s"' % fileName )
+         raise RuntimeError( '-- Compiler Error: Cannot open file "%s"' % ATGName )
 
       scanner = Scanner( strVal )
       parser  = Parser( )
