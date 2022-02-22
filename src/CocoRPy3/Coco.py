@@ -49,6 +49,10 @@ import sys
 import os
 import os.path
 
+ROOT_DIR = os.path.dirname( __file__ )
+# force import for Scanner, Parser, ... from the original location (and not generated ones)
+sys.path.insert(0, ROOT_DIR)
+
 from Scanner import Scanner
 from Errors import Errors
 from Trace import Trace
@@ -59,15 +63,19 @@ from ParserGen import ParserGen
 from Parser import Parser
 from CodeGenerator import CodeGenerator
 
-from setupInfo import MetaData
+from importlib.metadata import distribution, PackageNotFoundError
 
+metadata__name = "CocoRPy3 (no package)"
+metadata_version = "unknown"
 
-ROOT_DIR = os.path.dirname( __file__ )
+if __package__:
+   metadata__name = distribution(__package__).metadata['Name']
+   metadata_version = distribution(__package__).metadata['Version']
 
 class Coco:
    @staticmethod
    def main( argv=None ):
-      print('%s - version %s (built %s) - Ported to Python by %s (%s)\n' % ( MetaData['long_name'], MetaData['version'], MetaData['build_date'], MetaData['author'], MetaData['author_email'] ))
+      print('%s - version %s\n' % ( metadata__name, metadata_version))
 
       if argv is None:
          if len(sys.argv) == 1:
