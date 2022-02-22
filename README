@@ -68,9 +68,10 @@ QUICKSTART - Test the installation
 	
 8.  Building a package can be done on the root folder by executing 'python -m build'.
 
-9.  Installing the package with 'pip install .\dist\CocoRPy3-3.0-py3-none-any.whl'.
+9.  Installing the package with 'pip install .\dist\CocoRPy3-3.0.1-py3-none-any.whl'.
+    This installs the 'coco' script.
 
-10. Using Coco with executing 'python -m CocoRPy3.Coco'.
+10. Using Coco with executing 'coco xxx.atg'.
 	
 
 CONTENTS OF THIS DISTRIBUTION

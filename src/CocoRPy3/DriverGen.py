@@ -43,8 +43,8 @@ class DriverGen( object ):
 
    @staticmethod
    def WriteDriver( ):
-      fr = str( Tab.gramSy.name + '.frame' )
-      fn = Tab.gramSy.name + '.py'
+      fr = os.path.join(DriverGen.srcDir, str( Tab.gramSy.name + '.frame' ))
+      fn = os.path.join(DriverGen.srcDir, Tab.gramSy.name + '.py')
       fn = str(fn)
       DriverGen.codeGen.openFiles( [ fr, 'Driver.frame' ], Tab.gramSy.name + '.atg', fn, True )
       DriverGen.codeGen.CopyFramePart( '-->begin' )
