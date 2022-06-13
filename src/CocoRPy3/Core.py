@@ -2388,7 +2388,7 @@ class DFA( object ):
             if os.path.exists(fn + '.old'):
                os.remove( fn + '.old' )
             os.rename( fn, fn + '.old' )
-         DFA.gen = open( fn, 'w' )
+         DFA.gen = open( fn, 'w', encoding='utf-8' )
       except:
          raise RuntimeError("-- Compiler Error: Cannot generate scanner file.")
 
@@ -2403,7 +2403,7 @@ class DFA( object ):
          if not os.path.exists(fr):
             raise RuntimeError("-- Compiler Error: Cannot find Scanner.frame")
       try:
-         DFA.fram = open( fr, 'r' )
+         DFA.fram = open( fr, 'r', encoding='utf-8' )
       except:
          raise RuntimeError("-- Compiler Error: Cannot open Scanner.frame.")
       DFA.OpenGen(True)

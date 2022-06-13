@@ -27,7 +27,7 @@ class CodeGenerator( object ):
             if CodeGenerator.frameDir is not None:
                fr = os.path.join( CodeGenerator.frameDir, frameName )
          try:
-            self._frameFile = open( fr, 'r' )
+            self._frameFile = open( fr, 'r', encoding='utf-8' )
             break
          except IOError:
             pass
@@ -42,7 +42,7 @@ class CodeGenerator( object ):
             if os.path.exists( fn + '.old' ):
                os.remove( fn + '.old' )
             os.rename( fn, fn + '.old' )
-         self._outputFile = open( fn, 'w' )
+         self._outputFile = open( fn, 'w', encoding='utf-8' )
       except:
          raise RuntimeError( '-- Compiler Error: Cannot create ' + outputFileName[0] + '.py' )
 

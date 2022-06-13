@@ -37,7 +37,7 @@ class Trace( object ):
       assert isinstance( dir, str )
       Trace.fileName = os.path.join( dir, 'trace.txt' )
       try:
-         Trace.trace = open( Trace.fileName, 'w' )
+         Trace.trace = open( Trace.fileName, 'w', encoding='utf-8' )
       except IOError:
          raise RuntimeError( '-- Compiler Error: could not open ' + Trace.fileName )
 

@@ -102,7 +102,7 @@ class Coco:
 
       # Initialize the Scanner
       try:
-         s = open( ATGName, 'r' )
+         s = open( ATGName, 'r', encoding='utf-8' )
          try:
             strVal = s.read( )
          except IOError:

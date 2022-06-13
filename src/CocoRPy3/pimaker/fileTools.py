@@ -133,8 +133,8 @@ def compareFiles( fn1, fn2, **kwds ):
          ignoreHeader=<numLinesToIgnore>
             Ignore the first n lines of both input files.
    '''
-   f1 = open( os.path.normpath(fn1), 'r' ).readlines( )
-   f2 = open( os.path.normpath(fn2), 'r' ).readlines( )
+   f1 = open( os.path.normpath(fn1), 'r', encoding='utf-8' ).readlines( )
+   f2 = open( os.path.normpath(fn2), 'r', encoding='utf-8' ).readlines( )
 
    if 'ignoreHeader' in kwds:
       numLinesToIgnore = kwds[ 'ignoreHeader' ]
@@ -143,12 +143,12 @@ def compareFiles( fn1, fn2, **kwds ):
       return list(difflib.context_diff( f1, f2 ))
 
 def genHTMLDiff( fromFile, toFile, htmlDiffFilename ):
-   fromLines = open( os.path.normpath(fromFile), 'U' ).readlines( )
-   toLines   = open( os.path.normpath(toFile),   'U' ).readlines( )
+   fromLines = open( os.path.normpath(fromFile), 'U', encoding='utf-8' ).readlines( )
+   toLines   = open( os.path.normpath(toFile),   'U', encoding='utf-8' ).readlines( )
    
    diff = difflib.HtmlDiff().make_file( fromLines, toLines, fromFile, toFile )
    
-   out = open( htmlDiffFilename, 'w' )
+   out = open( htmlDiffFilename, 'w', encoding='utf-8' )
    out.write( diff )
    
 def dos2unix( filename ):

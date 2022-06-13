@@ -61,7 +61,7 @@ class Errors( object ):
       Errors.mergeErrors = merge
       if Errors.mergeErrors:
          try:
-            Errors.mergedList = open( listName, 'w' )
+            Errors.mergedList = open( listName, 'w', encoding='utf-8' )
          except IOError:
             raise RuntimeError( '-- Compiler Error: could not open ' + listName )
 

@@ -46,9 +46,9 @@ dirName, fileName = os.path.split(srcName)
 
 # Initialize the Scanner
 try:
-   s = open( srcName, 'r' )
+   s = open( srcName, 'r', encoding='utf-8' )
    try:
-      strVal = s.read( ).decode( locale.getpreferredencoding() )
+      strVal = s.read( )
    except IOError:
       sys.stdout.write( '-- Compiler Error: Failed to read from source file "%s"\n' % srcName )
 
