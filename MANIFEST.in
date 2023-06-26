@@ -1,2 +1,1 @@
-recursive-include src/CocoRPy3 *
-recursive-exclude src/CocoRPy3 *.pyc
+exclude .gitignore

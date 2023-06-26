@@ -62,20 +62,12 @@ from DriverGen import DriverGen
 from ParserGen import ParserGen
 from Parser import Parser
 from CodeGenerator import CodeGenerator
-
-from importlib.metadata import distribution, PackageNotFoundError
-
-metadata__name = "CocoRPy3 (no package)"
-metadata_version = "unknown"
-
-if __package__:
-   metadata__name = distribution(__package__).metadata['Name']
-   metadata_version = distribution(__package__).metadata['Version']
+import _version 
 -->begin
 class Coco:
    @staticmethod
    def main( argv=None ):
-      print('%s - version %s\n' % ( metadata__name, metadata_version))
+      print('CocoRPy3 - version %s\n' % ( _version.__version__))
 
       if argv is None:
          if len(sys.argv) == 1:
